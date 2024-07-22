@@ -32,20 +32,20 @@ function ProductDetail() {
       "PRODUCT FROM THE FIRST USEEFFECT WITH THE ID AS DEPENDENCY",
       product
     );
-  }, [id, product]);
-
-  useEffect(() => {
-    if (product) {
-      console.log(
-        "PRODUCT FROM THE SECOND USEEFFECT WITH PRODUCT AS DEPENDENCY",
-        product
-      );
-    }
   }, [product]);
+
+  // useEffect(() => {
+  //   if (product) {
+  //     console.log(
+  //       "PRODUCT FROM THE SECOND USEEFFECT WITH PRODUCT AS DEPENDENCY",
+  //       product
+  //     );
+  //   }
+  // }, [product]);
 
   return (
     <div>
-      {product && (
+      {
         <section className="text-gray-600 body-font overflow-hidden">
           <div className="container px-5 py-24 mx-auto">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
@@ -56,10 +56,10 @@ function ProductDetail() {
               />
               <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                 <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                  {product.brand} - {product.model}
+                  {product?.brand} - {product?.model}
                 </h2>
                 <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                  {product.name}
+                  {product?.name}
                 </h1>
                 <div className="flex mb-4">
                   <span className="flex items-center">
@@ -172,7 +172,7 @@ function ProductDetail() {
                   <div className="flex">
                     <span className="mr-3">Color</span>
                     <button
-                      className={`border-2 border-gray-300 ml-1 bg-${product.color} rounded-full w-6 h-6 focus:outline-none`}
+                      className={`border-2 border-gray-300 ml-1 bg-${product?.color} rounded-full w-6 h-6 focus:outline-none`}
                     ></button>
                   </div>
                   <div className="flex ml-6 items-center">
@@ -202,7 +202,7 @@ function ProductDetail() {
                 </div>
                 <div className="flex">
                   <span className="title-font font-medium text-2xl text-gray-900">
-                    ${product.price}
+                    ${product?.price}
                   </span>
                   <button className="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"></button>
                   <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
@@ -222,7 +222,7 @@ function ProductDetail() {
             </div>
           </div>
         </section>
-      )}
+      }
     </div>
   );
 }
