@@ -9,21 +9,20 @@ function ProductDetail() {
 
   const fetchItemById = async (id) => {
     try {
-      const response = await axios.get(
+      await axios.get(
         `https://desafio-lexart-backend.vercel.app/products/${id}`,
         {
           headers: { Authorization: jwt },
         }
       );
-      return response.data;
+      setProduct(data);
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(async () => {
-    const data = await fetchItemById(id);
-    setProduct(data);
+    await fetchItemById(id);
     console.log(
       "DATA FROM FIRST USEEFFECT WHERE I PUT ID AS DEPENDENCY, BUT DIDNT REALLY WORK",
       data
