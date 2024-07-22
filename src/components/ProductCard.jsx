@@ -10,7 +10,7 @@ function ProductCard({ id, name, brand, model, price, color }) {
       await axios.delete(
         `https://desafio-lexart-backend.vercel.app/products/${itemId}`
       );
-      //   navigate("/products");
+      navigate("/products");
     } catch (error) {
       navigate("/404");
     }
@@ -35,7 +35,7 @@ function ProductCard({ id, name, brand, model, price, color }) {
           <div className="flex justify-between items-center">
             <p className="mt-1">${price}</p>
             <LuTrash2
-              onClick={(e) => deleteItem(e.target.id)}
+              onClick={() => deleteItem(id)}
               className="stroke-red-600"
             />
           </div>
