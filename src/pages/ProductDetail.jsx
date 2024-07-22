@@ -20,8 +20,8 @@ function ProductDetail() {
     console.log(product);
   };
 
-  useEffect(async () => {
-    await fetchItemById(id);
+  useEffect(() => {
+    fetchItemById(id);
   }, []);
 
   return (

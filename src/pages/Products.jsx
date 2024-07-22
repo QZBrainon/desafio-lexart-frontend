@@ -22,8 +22,8 @@ function Products() {
     }
   };
 
-  useEffect(async () => {
-    await fetchData();
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (
