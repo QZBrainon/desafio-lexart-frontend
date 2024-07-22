@@ -9,20 +9,21 @@ function ProductDetail() {
 
   const fetchItemById = async (id) => {
     try {
-      await axios.get(
+      const response = await axios.get(
         `https://desafio-lexart-backend.vercel.app/products/${id}`,
         {
           headers: { Authorization: jwt },
         }
       );
       setProduct(data);
+      return response;
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(async () => {
-    await fetchItemById(id);
+    const data = await fetchItemById(id);
     console.log(
       "DATA FROM FIRST USEEFFECT WHERE I PUT ID AS DEPENDENCY, BUT DIDNT REALLY WORK",
       data
@@ -31,7 +32,7 @@ function ProductDetail() {
       "PRODUCT FROM THE FIRST USEEFFECT WITH THE ID AS DEPENDENCY",
       product
     );
-  }, [product]);
+  }, [id, product]);
 
   // useEffect(() => {
   //   if (product) {
