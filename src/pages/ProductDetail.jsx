@@ -6,7 +6,7 @@ function ProductDetail() {
   const { id } = useParams();
   const jwt = localStorage.getItem("jwt");
 
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState(null);
 
   const fetchItemById = async (id) => {
     const response = await axios.get(
