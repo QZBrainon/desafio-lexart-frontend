@@ -27,13 +27,13 @@ function SignIn() {
           password,
         }
       );
+      console.log(response);
       if (response.status === 200) {
         saveToken(response.data.token);
         navigate("/products");
       }
     } catch (error) {
       setError("Invalid credentials. Please try again.");
-      console.log(response);
     }
   };
 
