@@ -31,7 +31,7 @@ function Products() {
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-wrap -m-4">
             {products?.map((product) => (
-              <ProductCard {...product} key={product.id} />
+              <ProductCard {...product} key={product.id} refresh={fetchData} />
             ))}
           </div>
         </div>

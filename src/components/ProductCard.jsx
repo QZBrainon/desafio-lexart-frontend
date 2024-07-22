@@ -3,7 +3,7 @@ import { LuTrash2 } from "react-icons/lu";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ id, name, brand, model, price, color }) {
+function ProductCard({ id, name, brand, model, price, color, refresh }) {
   const navigate = useNavigate();
   const deleteItem = async (itemId) => {
     try {
@@ -14,6 +14,7 @@ function ProductCard({ id, name, brand, model, price, color }) {
           headers: { Authorization: jwt },
         }
       );
+      await refresh();
       navigate("/products");
     } catch (error) {
       console.error(error);
