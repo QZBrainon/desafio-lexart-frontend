@@ -29,7 +29,7 @@ function SignIn() {
       );
       console.log(response);
       if (response.status === 200) {
-        saveToken(response.data.token);
+        localStorage.setItem("jwt", response.data.token);
         navigate("/products");
       }
     } catch (error) {
