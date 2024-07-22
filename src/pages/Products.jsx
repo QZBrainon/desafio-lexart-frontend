@@ -8,12 +8,12 @@ function Products() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
     const fetchData = async () => {
       try {
+        const jwt = localStorage.getItem("jwt");
         const response = await axios.get(
           "https://desafio-lexart-backend.vercel.app/products",
-          { headers: { Authorization: `Bearer ${jwt}` } }
+          { headers: { Authorization: `${jwt}` } }
         );
         console.log(response);
         setProducts(response.data);
