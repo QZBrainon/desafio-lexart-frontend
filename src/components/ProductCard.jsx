@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 function ProductCard({ id, name, brand, model, price, color }) {
   const navigate = useNavigate();
-  const deleteItem = async (id) => {
+  const deleteItem = async (itemId) => {
     try {
-      await axios.delete("https://desafio-lexart-backend.vercel.app/products", {
-        id,
-      });
+      await axios.delete(
+        `https://desafio-lexart-backend.vercel.app/products/${itemId}`
+      );
       navigate("/products");
     } catch (error) {
       navigate("/404");
@@ -35,7 +35,7 @@ function ProductCard({ id, name, brand, model, price, color }) {
           <div className="flex justify-between items-center">
             <p className="mt-1">${price}</p>
             <LuTrash2
-              onClick={(id) => deleteItem(id)}
+              onClick={(e) => deleteItem(e.target.id)}
               className="stroke-red-600"
             />
           </div>
