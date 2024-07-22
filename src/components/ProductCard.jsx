@@ -23,7 +23,11 @@ function ProductCard({ id, name, brand, model, price, color, refresh }) {
   };
   return (
     <>
-      <div className="lg:w-1/4 md:w-1/2 p-4 w-full" id={id}>
+      <div
+        onClick={navigate(`/products/${id}`)}
+        className="lg:w-1/4 md:w-1/2 p-4 w-full"
+        id={id}
+      >
         <a className="block relative h-48 rounded overflow-hidden">
           <img
             alt="ecommerce"
