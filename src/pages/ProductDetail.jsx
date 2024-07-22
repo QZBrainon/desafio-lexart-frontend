@@ -15,16 +15,15 @@ function ProductDetail() {
           headers: { Authorization: jwt },
         }
       );
-      setProduct(response.data);
-      console.log(response.data.product);
-      console.log(product);
+      return response.data;
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    fetchItemById(id);
+    const data = fetchItemById(id);
+    setProduct(data);
   }, []);
 
   return (
