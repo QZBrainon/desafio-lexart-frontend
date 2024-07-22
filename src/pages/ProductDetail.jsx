@@ -32,7 +32,7 @@ function ProductDetail() {
       "PRODUCT FROM THE FIRST USEEFFECT WITH THE ID AS DEPENDENCY",
       product
     );
-  }, [id, product]);
+  }, []);
 
   // useEffect(() => {
   //   if (product) {
