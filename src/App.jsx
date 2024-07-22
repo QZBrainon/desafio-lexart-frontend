@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Products from "./pages/Products";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/products" element={<Products />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
