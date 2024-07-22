@@ -15,6 +15,7 @@ function Products() {
           "https://desafio-lexart-backend.vercel.app/products",
           { headers: { Authorization: `Bearer ${jwt}` } }
         );
+        console.log(response);
         setProducts(response.data);
       } catch (error) {
         console.error(error);
