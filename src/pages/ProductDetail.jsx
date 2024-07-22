@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function ProductDetail() {
-  const [product, setProduct] = useState();
+  const [product, setProduct] = useState({});
   const { id } = useParams();
   const jwt = localStorage.getItem("jwt");
 
@@ -28,7 +28,7 @@ function ProductDetail() {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <div>
