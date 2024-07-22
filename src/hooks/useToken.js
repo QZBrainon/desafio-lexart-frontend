@@ -9,7 +9,7 @@ export const useLocalStorageToken = (key = "jwtToken") => {
   }, [key]);
 
   const saveToken = (newToken) => {
-    localStorage.setItem(key, newToken);
+    localStorage.setItem(key, JSON.stringify(newToken));
     setToken(newToken);
   };
 
