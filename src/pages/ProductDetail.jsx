@@ -24,6 +24,8 @@ function ProductDetail() {
   useEffect(async () => {
     const data = await fetchItemById(id);
     setProduct(data);
+    console.log(data);
+    console.log(product);
   }, []);
 
   return (
