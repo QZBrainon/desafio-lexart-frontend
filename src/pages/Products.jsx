@@ -7,21 +7,22 @@ function Products() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
+  const fetchData = async () => {
+    try {
+      const jwt = localStorage.getItem("jwt");
+      const response = await axios.get(
+        "https://desafio-lexart-backend.vercel.app/products",
+        { headers: { Authorization: `${jwt}` } }
+      );
+      console.log(response);
+      setProducts(response.data);
+    } catch (error) {
+      console.error(error);
+      navigate("/");
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const jwt = localStorage.getItem("jwt");
-        const response = await axios.get(
-          "https://desafio-lexart-backend.vercel.app/products",
-          { headers: { Authorization: `${jwt}` } }
-        );
-        console.log(response);
-        setProducts(response.data);
-      } catch (error) {
-        console.error(error);
-        navigate("/");
-      }
-    };
     fetchData();
   }, []);
 
