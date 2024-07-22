@@ -12,7 +12,8 @@ function SignIn() {
 
   const { saveToken } = useLocalStorageToken;
 
-  const handleForm = async () => {
+  const handleForm = async (e) => {
+    e.preventDefault();
     if (!email || !password) {
       setError("Please fill in all fields.");
       return;
@@ -92,7 +93,7 @@ function SignIn() {
             </div>
             <div className="mb-6">
               <button
-                onClick={handleForm}
+                onClick={(e) => handleForm(e)}
                 type="submit"
                 className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out block text-center"
               >
