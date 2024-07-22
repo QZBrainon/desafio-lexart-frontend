@@ -15,8 +15,8 @@ function ProductDetail() {
           headers: { Authorization: jwt },
         }
       );
-      setProduct(data);
-      return response;
+      setProduct(response.data);
+      return response.data;
     } catch (error) {
       console.error(error);
     }
