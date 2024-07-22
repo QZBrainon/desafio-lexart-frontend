@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useLocalStorageToken } from "../hooks/useToken";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -9,8 +8,6 @@ function SignIn() {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-
-  const { saveToken } = useLocalStorageToken;
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -27,7 +24,6 @@ function SignIn() {
           password,
         }
       );
-      console.log(response);
       if (response.status === 200) {
         localStorage.setItem("jwt", response.data.token);
         navigate("/products");
