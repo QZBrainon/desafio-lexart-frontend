@@ -10,7 +10,7 @@ function ProductCard({ id, name, brand, model, price, color }) {
       await axios.delete(
         `https://desafio-lexart-backend.vercel.app/products/${itemId}`
       );
-      navigate("/products");
+      //   navigate("/products");
     } catch (error) {
       navigate("/404");
     }
