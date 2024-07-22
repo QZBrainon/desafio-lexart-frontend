@@ -94,7 +94,7 @@ function SignIn() {
             <div className="mb-6">
               <button
                 onClick={(e) => handleForm(e)}
-                type="submit"
+                type="button"
                 className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out block text-center"
               >
                 Login
