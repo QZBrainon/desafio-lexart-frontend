@@ -7,12 +7,17 @@ function ProductCard({ id, name, brand, model, price, color }) {
   const navigate = useNavigate();
   const deleteItem = async (itemId) => {
     try {
+      const jwt = localStorage.getItem("jwt");
       await axios.delete(
-        `https://desafio-lexart-backend.vercel.app/products/${itemId}`
+        `https://desafio-lexart-backend.vercel.app/products/${itemId}`,
+        {
+          headers: { Authorization: jwt },
+        }
       );
       navigate("/products");
     } catch (error) {
       console.error(error);
+      navigate("/404");
     }
   };
   return (
