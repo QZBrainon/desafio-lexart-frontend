@@ -32,11 +32,11 @@ function ProductCard({ id, name, brand, model, price, color }) {
           <h2 className="text-gray-900 title-font text-lg font-medium">
             {name}
           </h2>
-          <div classNameName="flex justify-between items-center">
+          <div className="flex justify-between items-center">
             <p className="mt-1">${price}</p>
             <LuTrash2
-              onClick={(e) => deleteItem(e.target.id)}
-              classNameName="stroke-red-600"
+              onClick={(id) => deleteItem(id)}
+              className="stroke-red-600"
             />
           </div>
         </div>
