@@ -1,7 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function SignUp() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleForm = async (e) => {
+    e.preventDefault();
+    if (!email || !password || !firstName || !lastName) {
+      setError("Please fill in all fields.");
+      return;
+    }
+    try {
+      setError(null);
+      const response = await axios.post(
+        "https://desafio-lexart-backend.vercel.app/auth/register",
+        {
+          firstName,
+          lastName,
+          email,
+          password,
+        }
+      );
+      if (response.status === 201) {
+        localStorage.setItem("jwt", response.data.token);
+        navigate("/products");
+      }
+    } catch (error) {
+      setError("Invalid credentials. Please try again.");
+    }
+  };
   return (
     // <!-- component -->
     <div className="flex justify-center min-h-screen bg-gray-100">
@@ -26,6 +60,8 @@ function SignUp() {
                 name="firstName"
                 id="firstName"
                 placeholder="Your first name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
                 className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
               />
             </div>
@@ -41,6 +77,8 @@ function SignUp() {
                 name="lastName"
                 id="lastName"
                 placeholder="Your last name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
                 className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
               />
             </div>
@@ -56,6 +94,8 @@ function SignUp() {
                 name="email"
                 id="email"
                 placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
               />
             </div>
@@ -73,12 +113,15 @@ function SignUp() {
                 name="password"
                 id="password"
                 placeholder="Your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
               />
             </div>
             <div className="mb-6">
               <button
                 type="button"
+                onClick={handleForm}
                 className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out"
               >
                 Sign in
@@ -93,6 +136,7 @@ function SignUp() {
                 Sign in
               </Link>
             </p>
+            {error && <p>{error}</p>}
           </form>
           {/* <!-- seperator -->   */}
           <div className="flex flex-row justify-center mb-8">
