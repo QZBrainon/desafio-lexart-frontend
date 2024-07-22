@@ -15,7 +15,6 @@ function ProductDetail() {
           headers: { Authorization: jwt },
         }
       );
-      setProduct(response.data);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -24,6 +23,7 @@ function ProductDetail() {
 
   useEffect(async () => {
     const data = await fetchItemById(id);
+    setProduct(data);
     console.log(
       "DATA FROM FIRST USEEFFECT WHERE I PUT ID AS DEPENDENCY, BUT DIDNT REALLY WORK",
       data
