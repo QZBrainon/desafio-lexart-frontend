@@ -4,11 +4,11 @@ import axios from "axios";
 
 function ProductDetail() {
   const [product, setProduct] = useState();
+  const { id } = useParams();
+  const jwt = localStorage.getItem("jwt");
 
   const fetchItemById = async (id) => {
     try {
-      const { id } = useParams();
-      const jwt = localStorage.getItem("jwt");
       const response = await axios.get(
         `https://desafio-lexart-backend.vercel.app/products/${id}`,
         {
@@ -21,8 +21,8 @@ function ProductDetail() {
     }
   };
 
-  useEffect(() => {
-    const data = fetchItemById(id);
+  useEffect(async () => {
+    const data = await fetchItemById(id);
     setProduct(data);
   }, []);
 
