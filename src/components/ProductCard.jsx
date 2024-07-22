@@ -12,7 +12,7 @@ function ProductCard({ id, name, brand, model, price, color }) {
       );
       navigate("/products");
     } catch (error) {
-      navigate("/404");
+      console.error(error);
     }
   };
   return (
@@ -36,7 +36,7 @@ function ProductCard({ id, name, brand, model, price, color }) {
             <p className="mt-1">${price}</p>
             <LuTrash2
               onClick={() => deleteItem(id)}
-              className="stroke-red-600"
+              className="stroke-red-600 hover:cursor-pointer"
             />
           </div>
         </div>
