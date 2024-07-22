@@ -26,6 +26,7 @@ function ProductDetail() {
       const data = await fetchItemById(id);
       setProduct(data);
       console.log("PRODUCT STATE:", product);
+      console.log("REQUEST RESPONSE:", data);
     };
 
     fetchData();
