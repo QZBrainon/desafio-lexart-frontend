@@ -22,26 +22,13 @@ function ProductDetail() {
   };
 
   useEffect(async () => {
-    const data = await fetchItemById(id);
-    setProduct(data);
-    console.log(
-      "DATA FROM FIRST USEEFFECT WHERE I PUT ID AS DEPENDENCY, BUT DIDNT REALLY WORK",
-      data
-    );
-    console.log(
-      "PRODUCT FROM THE FIRST USEEFFECT WITH THE ID AS DEPENDENCY",
-      product
-    );
-  }, []);
+    const fetchData = async () => {
+      const data = await fetchItemById(id);
+      setProduct(data);
+    };
 
-  // useEffect(() => {
-  //   if (product) {
-  //     console.log(
-  //       "PRODUCT FROM THE SECOND USEEFFECT WITH PRODUCT AS DEPENDENCY",
-  //       product
-  //     );
-  //   }
-  // }, [product]);
+    fetchData();
+  }, []);
 
   return (
     <div>
