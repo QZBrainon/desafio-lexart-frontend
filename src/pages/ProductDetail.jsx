@@ -3,21 +3,24 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function ProductDetail() {
-  const { id } = useParams();
-  const jwt = localStorage.getItem("jwt");
-
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState();
 
   const fetchItemById = async (id) => {
-    const response = await axios.get(
-      `https://desafio-lexart-backend.vercel.app/products/${id}`,
-      {
-        headers: { Authorization: jwt },
-      }
-    );
-    setProduct(response.data);
-    console.log(response.data);
-    console.log(product);
+    try {
+      const { id } = useParams();
+      const jwt = localStorage.getItem("jwt");
+      const response = await axios.get(
+        `https://desafio-lexart-backend.vercel.app/products/${id}`,
+        {
+          headers: { Authorization: jwt },
+        }
+      );
+      setProduct(response.data);
+      console.log(response.data.product);
+      console.log(product);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
