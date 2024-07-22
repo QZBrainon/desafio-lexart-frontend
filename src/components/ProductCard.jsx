@@ -25,7 +25,7 @@ function ProductCard({ id, name, brand, model, price, color, refresh }) {
     <>
       <div
         onClick={navigate(`/products/${id}`)}
-        className="lg:w-1/4 md:w-1/2 p-4 w-full"
+        className="lg:w-1/4 md:w-1/2 p-4 w-full hover:cursor-pointer"
         id={id}
       >
         <a className="block relative h-48 rounded overflow-hidden">

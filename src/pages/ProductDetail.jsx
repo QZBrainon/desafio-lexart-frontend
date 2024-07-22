@@ -16,6 +16,8 @@ function ProductDetail() {
       }
     );
     setProduct(response.data);
+    console.log(response.data);
+    console.log(product);
   };
 
   useEffect(() => {
