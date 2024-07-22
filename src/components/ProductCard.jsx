@@ -24,7 +24,7 @@ function ProductCard({ id, name, brand, model, price, color, refresh }) {
   return (
     <>
       <div
-        onClick={navigate(`/products/${id}`)}
+        onClick={() => navigate(`/products/${id}`)}
         className="lg:w-1/4 md:w-1/2 p-4 w-full hover:cursor-pointer"
         id={id}
       >
