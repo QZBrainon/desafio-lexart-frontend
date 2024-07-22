@@ -30,8 +30,8 @@ function Products() {
       <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-wrap -m-4">
-            {products?.map((product, index) => (
-              <ProductCard {...product} key={index} />
+            {products?.map((product) => (
+              <ProductCard {...product} key={product.id} />
             ))}
           </div>
         </div>

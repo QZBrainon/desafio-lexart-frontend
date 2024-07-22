@@ -1,7 +1,7 @@
 import React from "react";
 import { LuTrash2 } from "react-icons/lu";
 
-function ProductCard({ name, brand, model, price, color }) {
+function ProductCard({ id, name, brand, model, price, color }) {
   return (
     <>
       <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
