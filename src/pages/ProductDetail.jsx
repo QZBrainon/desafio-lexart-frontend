@@ -26,7 +26,13 @@ function ProductDetail() {
     setProduct(data);
     console.log(data);
     console.log(product);
-  }, []);
+  }, [id]);
+
+  useEffect(() => {
+    if (product) {
+      console.log(product);
+    }
+  }, [product]);
 
   return (
     <div>
