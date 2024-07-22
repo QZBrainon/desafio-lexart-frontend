@@ -25,6 +25,7 @@ function ProductDetail() {
     const fetchData = async () => {
       const data = await fetchItemById(id);
       setProduct(data);
+      console.log("PRODUCT STATE:", product);
     };
 
     fetchData();
