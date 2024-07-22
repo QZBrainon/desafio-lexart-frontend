@@ -1,4 +1,5 @@
 import React from "react";
+import { LuTrash2 } from "react-icons/lu";
 
 function ProductCard({ name, brand, model, price, color }) {
   return (
@@ -16,7 +17,10 @@ function ProductCard({ name, brand, model, price, color }) {
             {brand} - {model} - {color}
           </h3>
           <h2 class="text-gray-900 title-font text-lg font-medium">{name}</h2>
-          <p class="mt-1">${price}</p>
+          <div className="flex justify-between items-center">
+            <p class="mt-1">${price}</p>
+            <LuTrash2 className="fill-red-600" />
+          </div>
         </div>
       </div>
     </>
