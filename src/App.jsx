@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
 import ProductDetail from "./pages/ProductDetail";
+import AddProduct from "./pages/AddProduct";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/add" element={<AddProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

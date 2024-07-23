@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { LuTrash2 } from "react-icons/lu";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Edit } from "lucide-react";
+import UpdateProduct from "./Modal";
 
 function ProductCard({ id, name, brand, model, price, color, refresh }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
   const navigate = useNavigate();
   const deleteItem = async (itemId) => {
     try {
@@ -25,7 +31,7 @@ function ProductCard({ id, name, brand, model, price, color, refresh }) {
     <>
       <div
         onClick={() => navigate(`/products/${id}`)}
-        className="lg:w-1/4 md:w-1/2 p-4 w-full hover:cursor-pointer"
+        className="lg:w-1/4 md:w-1/2 p-4 w-full hover:cursor-pointer relative"
         id={id}
       >
         <a className="block relative h-48 rounded overflow-hidden">
@@ -40,13 +46,16 @@ function ProductCard({ id, name, brand, model, price, color, refresh }) {
             {brand} - {model} - {color}
           </h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">
-            {name}
+            <div className="flex justify-between items-center">{name}</div>
           </h2>
           <div className="flex justify-between items-center">
             <p className="mt-1">${price}</p>
             <LuTrash2
-              onClick={() => deleteItem(id)}
-              className="stroke-red-600 hover:cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteItem(id);
+              }}
+              className="stroke-red-600 hover:cursor-pointer absolute top-6 right-6"
             />
           </div>
         </div>

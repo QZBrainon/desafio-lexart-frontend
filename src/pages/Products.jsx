@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { PlusCircle } from "lucide-react";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -38,9 +39,12 @@ function Products() {
           <button
             onClick={() => navigate("/add")}
             type="button"
-            className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out block text-center"
+            className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out block text-center mt-16"
           >
-            Add new product
+            <div className="flex items-center justify-center gap-2">
+              <PlusCircle />
+              <p>Add new product</p>
+            </div>
           </button>
         </div>
       </section>

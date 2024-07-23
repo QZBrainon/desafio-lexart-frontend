@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Edit } from "lucide-react";
+
 import axios from "axios";
+import Modal from "../components/Modal";
 
 function ProductDetail() {
   const [product, setProduct] = useState({});
   const { id } = useParams();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   const jwt = localStorage.getItem("jwt");
 
   const fetchItemById = async (id) => {
@@ -16,8 +25,6 @@ function ProductDetail() {
         }
       );
       setProduct(response.data);
-      console.log(response.data);
-      console.log(product);
     } catch (error) {
       console.error(error);
     }
@@ -28,7 +35,7 @@ function ProductDetail() {
   }, []);
 
   return (
-    <div>
+    <div className="relative">
       {product && (
         <section className="text-gray-600 body-font overflow-hidden">
           <div className="container px-5 py-24 mx-auto">
@@ -43,7 +50,17 @@ function ProductDetail() {
                   {product?.brand} - {product?.model}
                 </h2>
                 <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                  {product?.name}
+                  <div className="flex items-center justify-between">
+                    {product?.name}
+                    <Edit
+                      className="hover:cursor-pointer"
+                      size={18}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleModal();
+                      }}
+                    />
+                  </div>
                 </h1>
                 <div className="flex mb-4">
                   <span className="flex items-center">
@@ -205,6 +222,19 @@ function ProductDetail() {
           </div>
         </section>
       )}
+      <div className="absolute top-0 right-0 w-screen bg-transparent">
+        {isModalOpen && (
+          <Modal
+            id={product.id}
+            name={product.name}
+            brand={product.brand}
+            model={product.model}
+            price={product.price}
+            color={product.color}
+            toggleModal={toggleModal}
+          />
+        )}
+      </div>
     </div>
   );
 }
