@@ -35,6 +35,13 @@ function Products() {
               <ProductCard {...product} key={product.id} refresh={fetchData} />
             ))}
           </div>
+          <button
+            onClick={() => navigate("/add")}
+            type="button"
+            className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out block text-center"
+          >
+            Add new product
+          </button>
         </div>
       </section>
     </>

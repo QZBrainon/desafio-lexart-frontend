@@ -15,22 +15,17 @@ function ProductDetail() {
           headers: { Authorization: jwt },
         }
       );
-      return response.data;
+      setProduct(response.data);
+      console.log(response.data);
+      console.log(product);
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchItemById(id);
-      setProduct(data);
-      console.log("PRODUCT STATE:", product);
-      console.log("REQUEST RESPONSE:", data);
-    };
-
-    fetchData();
-  }, [id]);
+    fetchItemById(id);
+  }, []);
 
   return (
     <div>
@@ -109,7 +104,6 @@ function ProductDetail() {
                     </svg>
                     <span className="text-gray-600 ml-3">4 Reviews</span>
                   </span>{" "}
-                  <button className="border-2 border-gray-300 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none"></button>
                   <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
                     <a className="text-gray-500">
                       <svg
@@ -159,10 +153,7 @@ function ProductDetail() {
                 </p>
                 <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                   <div className="flex">
-                    <span className="mr-3">Color</span>
-                    <button
-                      className={`border-2 border-gray-300 ml-1 bg-${product?.color} rounded-full w-6 h-6 focus:outline-none`}
-                    ></button>
+                    <span className="mr-3">Color - {product?.color}</span>
                   </div>
                   <div className="flex ml-6 items-center">
                     <span className="mr-3">Size</span>
@@ -193,7 +184,9 @@ function ProductDetail() {
                   <span className="title-font font-medium text-2xl text-gray-900">
                     ${product?.price}
                   </span>
-                  <button className="flex ml-auto text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"></button>
+                  <button className="flex ml-auto text-center justify-center items-center text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded">
+                    Buy now
+                  </button>
                   <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                     <svg
                       fill="currentColor"
