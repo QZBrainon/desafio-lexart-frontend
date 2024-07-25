@@ -13,7 +13,7 @@ function Hero() {
             now available to you!
           </h1>
           <p className="mb-8 leading-relaxed">
-            Explore a world where tradition meets innovation. From classNameic
+            Explore a world where tradition meets innovation. From iconic
             designs to cutting-edge technology, our collection celebrates the
             essence of mobile evolution. Join us and experience a journey where
             every detail, from the ergonomic design to the latest features,
